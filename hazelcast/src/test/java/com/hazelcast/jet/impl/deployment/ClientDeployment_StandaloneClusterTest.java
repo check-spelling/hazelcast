@@ -42,7 +42,7 @@ public class ClientDeployment_StandaloneClusterTest extends JetTestSupport {
     public void when_classAddedUsingUcd_then_visibleToJet() throws Exception {
         URL classUrl = new File(CLASS_DIRECTORY).toURI().toURL();
         URLClassLoader urlClassLoader = new URLClassLoader(new URL[]{classUrl}, null);
-        Class<?> personClz = urlClassLoader.loadClass("com.sample.pojo.person.Person$Appereance");
+        Class<?> personClz = urlClassLoader.loadClass("com.sample.pojo.person.Person$Appearance");
 
         ClientConfig clientConfig = new ClientConfig();
         clientConfig.setClassLoader(urlClassLoader);
