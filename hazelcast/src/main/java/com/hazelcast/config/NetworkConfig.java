@@ -180,7 +180,7 @@ public class NetworkConfig {
      * This property should not be set to true on the Windows platform: see
      * <ol>
      * <li>http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6421091</li>
-     * <li>http://www.hsc.fr/ressources/articles/win_net_srv/multiple_bindings.html</li>
+     * <li>http://www.hsc.fr/resources/articles/win_net_srv/multiple_bindings.html</li>
      * </ol>
      * By default, if the OS is Windows then reuseAddress will be false.
      */
