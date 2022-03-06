@@ -170,7 +170,7 @@ public final class ContinuousQueryAddListenerCodec {
         /**
          * @param events List of events in the form of data that holds the details of the event such as key, value, old value,
          *               new value and creation time.
-         * @param source Source that dispathces this batch event.
+         * @param source Source that dispatches this batch event.
          * @param partitionId Id of the partition that holds the keys of the batch event.
          */
         public abstract void handleQueryCacheBatchEvent(java.util.Collection<com.hazelcast.map.impl.querycache.event.QueryCacheEventData> events, java.lang.String source, int partitionId);
