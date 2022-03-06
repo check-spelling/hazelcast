@@ -54,7 +54,7 @@ import static org.junit.Assert.assertTrue;
  * This test also forces a delay between the serialization and deserialization. If a ringbuffer is configured
  * with a ttl, we don't want to send over the actual expiration time, because on a different member in the
  * cluster, there could be a big time difference which can lead to the ringbuffer immediately cleaning or cleaning
- * very very late.
+ * very late.
  */
 @RunWith(HazelcastParallelClassRunner.class)
 @Category({QuickTest.class, ParallelJVMTest.class})
