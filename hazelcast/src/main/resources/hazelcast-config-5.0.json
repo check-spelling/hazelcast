@@ -2128,7 +2128,7 @@
                 "type": "integer",
                 "minimum": 0,
                 "default": 0,
-                "description": "Sets the time to live in seconds. Time to live is the time the event journal retains items before removing them from the journal. The events are removed on journal read and write actions, not while the journal is idle. Time to live can be disabled by setting timeToLiveSeconds to 0. This means that the events never expire but they can be overwritten when the capacity of the journal is exceeed. Any integer between 0 and Integer.MAX_VALUE. 0 means infinite."
+                "description": "Sets the time to live in seconds. Time to live is the time the event journal retains items before removing them from the journal. The events are removed on journal read and write actions, not while the journal is idle. Time to live can be disabled by setting timeToLiveSeconds to 0. This means that the events never expire but they can be overwritten when the capacity of the journal is exceed. Any integer between 0 and Integer.MAX_VALUE. 0 means infinite."
               }
             }
           },
@@ -2350,7 +2350,7 @@
           "type": "integer",
           "minimum": 1,
           "default": 120,
-          "description": "Timeout duration for CP members to restore their data from disk. CP member fails its startup if it cannot complete its CP data restore rocess in the configured duration."
+          "description": "Timeout duration for CP members to restore their data from disk. CP member fails its startup if it cannot complete its CP data restore process in the configured duration."
         },
         "raft-algorithm": {
           "type": "object",
@@ -2440,14 +2440,14 @@
       }
     },
     "BackupCount": {
-      "description": "Number of synchronous backups. For example, if 1 is set as the backup count, then all entries of the map will be copied to another JVM for fail-safety. 0 means no sync backup. The sum of backup-count and async-backup-count can't be larger than than 6.",
+      "description": "Number of synchronous backups. For example, if 1 is set as the backup count, then all entries of the map will be copied to another JVM for fail-safety. 0 means no sync backup. The sum of backup-count and async-backup-count can't be larger than 6.",
       "type": "integer",
       "minimum": 0,
       "default": 1,
       "maximum": 6
     },
     "AsyncBackupCount": {
-      "description": "The number of asynchronous backups. 0 means no backups. The sum of backup-count and async-backup-count can't be larger than than 6.",
+      "description": "The number of asynchronous backups. 0 means no backups. The sum of backup-count and async-backup-count can't be larger than 6.",
       "type": "integer",
       "minimum": 0,
       "default": 0,
@@ -3262,7 +3262,7 @@
               },
               "min-std-deviation-millis": {
                 "type": "integer",
-                "description": "Minimum standard deviation (in milliseconds) to use for the normal distribution used when calculating phi. Overrides the hazelcast.heartbeat.phiaccrual.failuredetector.min.std.dev.millis system propery."
+                "description": "Minimum standard deviation (in milliseconds) to use for the normal distribution used when calculating phi. Overrides the hazelcast.heartbeat.phiaccrual.failuredetector.min.std.dev.millis system property."
               },
               "heartbeat-interval-millis": {
                 "type": "integer",
@@ -3966,7 +3966,7 @@
               },
               "properties": {
                 "type": "object",
-                "description": "Properties for the custom WAN consumer. These properties are accessible when initalizing the WAN consumer."
+                "description": "Properties for the custom WAN consumer. These properties are accessible when initializing the WAN consumer."
               },
               "persist-wan-replicated-data": {
                 "type": "boolean",

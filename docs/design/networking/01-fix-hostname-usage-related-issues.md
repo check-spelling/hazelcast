@@ -17,7 +17,7 @@
 |||
 |---|---|
 |Related Jira| https://hazelcast.atlassian.net/browse/HZ-528       |
-|Related Github issues          | https://github.com/hazelcast/hazelcast/issues/15722, https://github.com/hazelcast/hazelcast/issues/16651, https://github.com/hazelcast/hazelcast-enterprise/issues/3627, https://github.com/hazelcast/hazelcast-enterprise/issues/4342 |
+|Related GitHub issues          | https://github.com/hazelcast/hazelcast/issues/15722, https://github.com/hazelcast/hazelcast/issues/16651, https://github.com/hazelcast/hazelcast-enterprise/issues/3627, https://github.com/hazelcast/hazelcast-enterprise/issues/4342 |
 |Implementation PR|https://github.com/hazelcast/hazelcast/pull/20014|
 |Document Status / Completeness | DESIGN REVIEW|
 |Requirement owner              | _Requirement owner_                                 |
@@ -341,7 +341,7 @@ Unit and integration tests should:
 - Verify UUID-Address management with Persistence enabled remains working (consider restarting with same UUID);
 - Verify TLS remains working (when host validation is enabled);
 - Verify the performance doesn't significantly drop in different environments (On premise, Kubernetes, GKE, AWS deployments etc.)
-- Verify cluster is correctly being formed, Persistence and WAN is working when `setPublicAdress` is applied
+- Verify cluster is correctly being formed, Persistence and WAN is working when `setPublicAddress` is applied
 - Verify that the client from external network can connect to the cluster
 
 It would definitely be better to test these scenarios also with hazelcast test containers as well.

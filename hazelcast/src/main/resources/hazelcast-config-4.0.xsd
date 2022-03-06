@@ -2394,7 +2394,7 @@
                 <xs:annotation>
                     <xs:documentation>
                         Properties for the custom WAN consumer. These properties are
-                        accessible when initalizing the WAN consumer.
+                        accessible when initializing the WAN consumer.
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
@@ -4143,7 +4143,7 @@
             <xs:element name="endpoint-group" type="endpoint-group" minOccurs="0" maxOccurs="unbounded">
                 <xs:annotation>
                     <xs:documentation>
-                        Enables or disables named REST enpoint group.
+                        Enables or disables named REST endpoint group.
                         If a group is not listed within the rest-api configuration, then it's 'enabledByDefault' flag is used
                         to control the behavior of the group.
                     </xs:documentation>

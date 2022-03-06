@@ -342,7 +342,7 @@
                 incoming WAN events will be used.
             - <properties>:
                 Properties for the custom WAN consumer. These properties are
-                accessible when initalizing the WAN consumer.
+                accessible when initializing the WAN consumer.
             - <persist-wan-replicated-data>:
                 When true, an incoming event over WAN replication can be persisted to a
                 database for example, otherwise it will not be persisted. Default value
@@ -1185,7 +1185,7 @@
             Time to live is the time the event journal retains items before removing them from the journal.
             The events are removed on journal read and write actions, not while the journal is idle.
             Time to live can be disabled by setting timeToLiveSeconds to 0. This means that the
-            events never expire but they can be overwritten when the capacity of the journal is exceeed.
+            events never expire but they can be overwritten when the capacity of the journal is exceed.
             Any integer between 0 and Integer.MAX_VALUE. 0 means infinite. Its default value is 0.
         * <map-store>:
         Configuration options when you want to load/store the map entries from/to a persistent data store such as a
@@ -1703,7 +1703,7 @@
             Time to live is the time the event journal retains items before removing them from the journal.
             The events are removed on journal read and write actions, not while the journal is idle.
             Time to live can be disabled by setting timeToLiveSeconds to 0. This means that the
-            events never expire but they can be overwritten when the capacity of the journal is exceeed.
+            events never expire but they can be overwritten when the capacity of the journal is exceed.
             Any integer between 0 and Integer.MAX_VALUE. 0 means infinite. Its default value is 0.
         * <disable-per-entry-invalidation-events>:
         Disables invalidation events for each entry; but full-flush invalidation events are still enabled.
@@ -2768,7 +2768,7 @@
     </local-device>
 
     <!--
-        ===== HAZELCAST DYNAMIC CONFIGURATION CONFIGURATION =====
+        ===== HAZELCAST DYNAMIC CONFIGURATION =====
 
         Configuration settings related to dynamic configuration feature.
 

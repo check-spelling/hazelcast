@@ -386,16 +386,16 @@ public class AggregateOperationsTest {
 
     @Test
     public void when_toMap() {
-        Map<Integer, Integer> acced = new HashMap<>();
-        acced.put(1, 1);
+        Map<Integer, Integer> accumulated = new HashMap<>();
+        accumulated.put(1, 1);
 
-        Map<Integer, Integer> combined = new HashMap<>(acced);
+        Map<Integer, Integer> combined = new HashMap<>(accumulated);
         combined.put(2, 2);
 
         validateOpWithoutDeduct(
                 toMap(Entry::getKey, Entry::getValue),
                 identity(), entry(1, 1), entry(2, 2),
-                acced, combined, combined);
+                accumulated, combined, combined);
     }
 
     @Test
@@ -431,8 +431,8 @@ public class AggregateOperationsTest {
 
     @Test
     public void when_toMapWithMerge_then_merged() {
-        Map<Integer, Integer> acced = new HashMap<>();
-        acced.put(1, 1);
+        Map<Integer, Integer> accumulated = new HashMap<>();
+        accumulated.put(1, 1);
 
         Map<Integer, Integer> combined = new HashMap<>();
         combined.put(1, 3);
@@ -440,7 +440,7 @@ public class AggregateOperationsTest {
         validateOpWithoutDeduct(
                 toMap(Entry::getKey, Entry::getValue, Integer::sum),
                 identity(), entry(1, 1), entry(1, 2),
-                acced, combined, combined);
+                accumulated, combined, combined);
     }
 
     @Test
@@ -696,7 +696,7 @@ public class AggregateOperationsTest {
             Function<A, X> getAccValFn,
             T item1,
             T item2,
-            X expectAcced1,
+            X expectAccumulated1,
             X expectCombined,
             R expectFinished
     ) {
@@ -717,7 +717,7 @@ public class AggregateOperationsTest {
         // are allowed to be destructive ops
 
         // Then
-        assertEqualsOrArrayEquals("accumulated", expectAcced1, getAccValFn.apply(acc1));
+        assertEqualsOrArrayEquals("accumulated", expectAccumulated1, getAccValFn.apply(acc1));
 
         R acc1Exported = op.exportFn().apply(acc1);
         byte[] acc1ExportedSerialized = serialize(acc1Exported);
@@ -745,7 +745,7 @@ public class AggregateOperationsTest {
         // When
         deductFn.accept(acc1, acc2);
         // Then
-        assertEqualsOrArrayEquals("deducted", expectAcced1, getAccValFn.apply(acc1));
+        assertEqualsOrArrayEquals("deducted", expectAccumulated1, getAccValFn.apply(acc1));
 
         // When - accumulate both items into single accumulator
         acc1 = op.createFn().get();
@@ -768,12 +768,12 @@ public class AggregateOperationsTest {
             Function<? super A, ? extends X> getAccValFn,
             T itemLeft,
             T itemRight,
-            X expectAccedLeft,
+            X expectAccumulatedLeft,
             X expectCombined,
             R expectFinished
     ) {
         validateOpWithoutDeduct(
-                op, getAccValFn, singleton(itemLeft), singleton(itemRight), expectAccedLeft, expectCombined, expectFinished
+                op, getAccValFn, singleton(itemLeft), singleton(itemRight), expectAccumulatedLeft, expectCombined, expectFinished
         );
     }
 
@@ -782,7 +782,7 @@ public class AggregateOperationsTest {
             Function<? super A, ? extends X> getAccValFn,
             Iterable<T> itemsLeft,
             Iterable<T> itemsRight,
-            X expectAccedLeft,
+            X expectAccumulatedLeft,
             X expectCombined,
             R expectFinished
     ) {
@@ -802,7 +802,7 @@ public class AggregateOperationsTest {
         // are allowed to be destructive ops
 
         // Then
-        assertEquals("accumulated", expectAccedLeft, getAccValFn.apply(acc1));
+        assertEquals("accumulated", expectAccumulatedLeft, getAccValFn.apply(acc1));
 
         R acc1Exported = op.exportFn().apply(acc1);
         byte[] acc1ExportedSerialized = serialize(acc1Exported);

@@ -58,7 +58,7 @@ public final class MapFetchNearCacheInvalidationMetadataCodec {
         public java.util.List<java.lang.String> names;
 
         /**
-         * The uuid of the member to fetch the near cahce invalidation meta data
+         * The uuid of the member to fetch the near cache invalidation meta data
          */
         public java.util.UUID uuid;
     }

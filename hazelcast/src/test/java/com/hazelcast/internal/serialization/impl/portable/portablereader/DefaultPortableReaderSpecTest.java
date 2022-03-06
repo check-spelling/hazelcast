@@ -62,7 +62,7 @@ import static org.junit.Assert.assertThat;
  * Tests that verifies the behavior of the DefaultPortableReader.
  * All tests cases are generated, since there's a lot of possible cases due to the long lists of read* method on the reader.
  * <p>
- * The test is parametrised with 4 parameters
+ * The test is parameterized with 4 parameters
  * Each test execution runs one read operation on the reader.
  * <p>
  * The rationale behind these tests is to cover all possible combinations of reads using nested paths and quantifiers
@@ -97,7 +97,7 @@ public class DefaultPortableReaderSpecTest extends HazelcastTestSupport {
     private String parent;
 
     @Parameters(name = "{index}: {0}, read{2}, {3}")
-    public static Collection<Object[]> parametrisationData() {
+    public static Collection<Object[]> parameterizationData() {
         List<Object[]> result = new ArrayList<>();
 
         directPrimitiveScenarios(result);

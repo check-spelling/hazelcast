@@ -188,7 +188,7 @@ public final class Preconditions {
     /**
      * Tests if a {@code value} is positive, that is strictly larger than 0 (value &gt; 0).
      *
-     * @param paramName the the name of the checked parameter that will be in exception message
+     * @param paramName the name of the checked parameter that will be in exception message
      * @param value     the value tested to see if it is positive.
      * @return the value
      * @throws java.lang.IllegalArgumentException if the value is not positive.
@@ -219,11 +219,11 @@ public final class Preconditions {
         }
 
         if (newBackupCount > MAX_BACKUP_COUNT) {
-            throw new IllegalArgumentException("backup-count can't be larger than than " + MAX_BACKUP_COUNT);
+            throw new IllegalArgumentException("backup-count can't be larger than " + MAX_BACKUP_COUNT);
         }
 
         if (newBackupCount + currentAsyncBackupCount > MAX_BACKUP_COUNT) {
-            throw new IllegalArgumentException("the sum of backup-count and async-backup-count can't be larger than than "
+            throw new IllegalArgumentException("the sum of backup-count and async-backup-count can't be larger than "
                     + MAX_BACKUP_COUNT);
         }
 
@@ -249,11 +249,11 @@ public final class Preconditions {
         }
 
         if (newAsyncBackupCount > MAX_BACKUP_COUNT) {
-            throw new IllegalArgumentException("async-backup-count can't be larger than than " + MAX_BACKUP_COUNT);
+            throw new IllegalArgumentException("async-backup-count can't be larger than " + MAX_BACKUP_COUNT);
         }
 
         if (currentBackupCount + newAsyncBackupCount > MAX_BACKUP_COUNT) {
-            throw new IllegalArgumentException("the sum of backup-count and async-backup-count can't be larger than than "
+            throw new IllegalArgumentException("the sum of backup-count and async-backup-count can't be larger than "
                     + MAX_BACKUP_COUNT);
         }
 

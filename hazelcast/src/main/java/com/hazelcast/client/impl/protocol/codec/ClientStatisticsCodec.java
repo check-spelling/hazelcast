@@ -36,7 +36,7 @@ import static com.hazelcast.client.impl.protocol.codec.builtin.FixedSizeTypesCod
 /**
  * The statistics is composed of three parameters.
  * 
- * The first paramteter is the timestamp taken when the statistics collected.
+ * The first parameter is the timestamp taken when the statistics collected.
  * 
  * The second parameter, the clientAttribute is a String that is composed of key=value pairs separated by ','. The
  * following characters ('=' '.' ',' '\') should be escaped.

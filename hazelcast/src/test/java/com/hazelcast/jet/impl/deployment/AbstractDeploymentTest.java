@@ -92,7 +92,7 @@ public abstract class AbstractDeploymentTest extends SimpleTestInClusterSupport 
         JobConfig jobConfig = new JobConfig();
         URL classUrl = new File(CLASS_DIRECTORY).toURI().toURL();
         URLClassLoader urlClassLoader = new URLClassLoader(new URL[]{classUrl}, null);
-        Class<?> appearance = urlClassLoader.loadClass("com.sample.pojo.person.Person$Appereance");
+        Class<?> appearance = urlClassLoader.loadClass("com.sample.pojo.person.Person$Appearance");
         jobConfig.addClass(appearance);
 
         executeAndPeel(getJet().newJob(dag, jobConfig));
@@ -107,7 +107,7 @@ public abstract class AbstractDeploymentTest extends SimpleTestInClusterSupport 
         JobConfig jobConfig = new JobConfig();
         URL classUrl = new File(CLASS_DIRECTORY).toURI().toURL();
         URLClassLoader urlClassLoader = new URLClassLoader(new URL[]{classUrl}, null);
-        Class<?> appearanceClz = urlClassLoader.loadClass("com.sample.pojo.person.Person$Appereance");
+        Class<?> appearanceClz = urlClassLoader.loadClass("com.sample.pojo.person.Person$Appearance");
         jobConfig.addClass(appearanceClz);
 
         Job job = getJet().newJob(dag, jobConfig);
@@ -158,7 +158,7 @@ public abstract class AbstractDeploymentTest extends SimpleTestInClusterSupport 
     public void testDeployment_whenZipAddedAsResource_thenClassesFromAllJarsAvailableOnClassLoader() throws Throwable {
         DAG dag = new DAG();
         List<String> onClasspath = new ArrayList<>();
-        onClasspath.add("com.sample.pojo.person.Person$Appereance");
+        onClasspath.add("com.sample.pojo.person.Person$Appearance");
         onClasspath.add("com.sample.pojo.car.Car");
         List<String> notOnClasspath = new ArrayList<>();
         notOnClasspath.add("com.sample.pojo.address.Address");

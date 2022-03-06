@@ -214,7 +214,7 @@ public class CustomFormatTest extends BaseFileFormatTest {
         }
 
         @Override
-        protected boolean isSplitable(JobContext context, org.apache.hadoop.fs.Path file) {
+        protected boolean isSplittable(JobContext context, org.apache.hadoop.fs.Path file) {
             return false;
         }
     }
