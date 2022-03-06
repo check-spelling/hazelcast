@@ -34,7 +34,7 @@ public class LoadClassesIsolated extends AbstractProcessor {
     LoadClassesIsolated(boolean shouldComplete) {
         this.shouldComplete = shouldComplete;
         onClasspath = new ArrayList<>();
-        onClasspath.add("com.sample.pojo.person.Person$Appereance");
+        onClasspath.add("com.sample.pojo.person.Person$Appearance");
         notOnClasspath = new ArrayList<>();
         notOnClasspath.add("com.sample.pojo.car.Car");
     }
