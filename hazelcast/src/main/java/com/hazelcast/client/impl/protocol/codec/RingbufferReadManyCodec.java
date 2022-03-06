@@ -125,7 +125,7 @@ public final class RingbufferReadManyCodec {
         public int readCount;
 
         /**
-         * List of items that have beee read.
+         * List of items that have been read.
          */
         public java.util.List<com.hazelcast.internal.serialization.Data> items;
 
