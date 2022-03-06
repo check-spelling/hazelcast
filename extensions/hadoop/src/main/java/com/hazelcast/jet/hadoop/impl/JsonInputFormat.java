@@ -63,7 +63,7 @@ public class JsonInputFormat extends FileInputFormat<NullWritable, Object> {
     }
 
     @Override
-    protected boolean isSplitable(JobContext context, Path file) {
+    protected boolean isSplittable(JobContext context, Path file) {
         boolean multiline = acceptMultilineJson(context.getConfiguration());
         final CompressionCodec codec = new CompressionCodecFactory(context.getConfiguration()).getCodec(file);
         return ((null == codec) || (codec instanceof SplittableCompressionCodec))
