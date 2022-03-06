@@ -1381,7 +1381,7 @@ public class ClientConsoleApp implements EntryListener, ItemListener, MessageLis
         printQueueCommands();
         printSetCommands();
         printLockCommands();
-        printMulitiMapCommands();
+        printMultiMapCommands();
         printListCommands();
         printAtomicLongCommands();
         printExecutorServiceCommands();
@@ -1480,7 +1480,7 @@ public class ClientConsoleApp implements EntryListener, ItemListener, MessageLis
         println("");
     }
 
-    private void printMulitiMapCommands() {
+    private void printMultiMapCommands() {
         printlnBold("MultiMap commands:");
         println("  mm.put <key> <value>                    puts an entry to the multimap");
         println("  mm.get <key>                            returns the value of given key from the multimap");
