@@ -34,7 +34,7 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 public class WholeFileAsBytesInputFormat extends FileInputFormat<NullWritable, BytesWritable> {
 
     @Override
-    protected boolean isSplitable(JobContext context, Path file) {
+    protected boolean isSplittable(JobContext context, Path file) {
         return false;
     }
 
