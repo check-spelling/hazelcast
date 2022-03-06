@@ -2768,7 +2768,7 @@
     </local-device>
 
     <!--
-        ===== HAZELCAST DYNAMIC CONFIGURATION CONFIGURATION =====
+        ===== HAZELCAST DYNAMIC CONFIGURATION =====
 
         Configuration settings related to dynamic configuration feature.
 

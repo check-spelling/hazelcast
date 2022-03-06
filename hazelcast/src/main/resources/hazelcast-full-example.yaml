@@ -2705,7 +2705,7 @@ hazelcast:
       read-io-thread-count: 4
       write-io-thread-count: 4
 
-  # ===== HAZELCAST DYNAMIC CONFIGURATION CONFIGURATION =====
+  # ===== HAZELCAST DYNAMIC CONFIGURATION =====
   #
   # Configuration settings related to dynamic configuration feature.
   #
