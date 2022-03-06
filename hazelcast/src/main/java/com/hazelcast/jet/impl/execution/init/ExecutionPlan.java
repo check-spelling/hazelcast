@@ -130,7 +130,7 @@ public class ExecutionPlan implements IdentifiedDataSerializable {
     private final transient Map<String, Map<Address, ConcurrentConveyor<Object>>> edgeSenderConveyorMap = new HashMap<>();
     private final transient List<Processor> processors = new ArrayList<>();
 
-    private transient PartitionArrangement ptionArrgmt;
+    private transient PartitionArrangement ptionArrangement;
 
     private transient NodeEngineImpl nodeEngine;
     private transient JobClassLoaderService jobClassLoaderService;
@@ -174,7 +174,7 @@ public class ExecutionPlan implements IdentifiedDataSerializable {
         initProcSuppliers(jobId, tempDirectories, jobSerializationService);
         initDag(jobSerializationService);
 
-        this.ptionArrgmt = new PartitionArrangement(partitionAssignment, nodeEngine.getThisAddress());
+        this.ptionArrangement = new PartitionArrangement(partitionAssignment, nodeEngine.getThisAddress());
         Set<Integer> higherPriorityVertices = VertexDef.getHigherPriorityVertices(vertices);
         for (Address destAddr : remoteMembers.get()) {
             Connection conn = getMemberConnection(nodeEngine, destAddr);
@@ -460,7 +460,7 @@ public class ExecutionPlan implements IdentifiedDataSerializable {
         int upstreamParallelism = edge.sourceVertex().localParallelism();
         int downstreamParallelism = edge.destVertex().localParallelism();
         int queueSize = edge.getConfig().getQueueSize();
-        int numRemoteMembers = ptionArrgmt.getRemotePartitionAssignment().size();
+        int numRemoteMembers = ptionArrangement.getRemotePartitionAssignment().size();
 
         if (edge.routingPolicy() == RoutingPolicy.ISOLATED) {
             ConcurrentConveyor<Object>[] localConveyors = localConveyorMap.computeIfAbsent(
@@ -512,7 +512,7 @@ public class ExecutionPlan implements IdentifiedDataSerializable {
             if (edge.routingPolicy() != RoutingPolicy.PARTITIONED) {
                 throw new JetException("An edge distributing to a specific member must be partitioned: " + edge);
             }
-            if (!ptionArrgmt.getRemotePartitionAssignment().containsKey(edge.getDistributedTo())
+            if (!ptionArrangement.getRemotePartitionAssignment().containsKey(edge.getDistributedTo())
                 && !edge.getDistributedTo().equals(nodeEngine.getThisAddress())) {
                 throw new JetException("The target member of an edge is not present in the cluster or is a lite member: "
                                        + edge);
@@ -531,8 +531,8 @@ public class ExecutionPlan implements IdentifiedDataSerializable {
         // assign remote partitions to outbound data collectors
         Address distributeTo = edge.getDistributedTo();
         Map<Address, int[]> memberToPartitions = distributeTo.equals(DISTRIBUTE_TO_ALL)
-                ? ptionArrgmt.getRemotePartitionAssignment()
-                : ptionArrgmt.remotePartitionAssignmentToOne(distributeTo);
+                ? ptionArrangement.getRemotePartitionAssignment()
+                : ptionArrangement.remotePartitionAssignmentToOne(distributeTo);
 
         OutboundCollector[] remoteCollectors = new OutboundCollector[memberToPartitions.size()];
         int index = 0;
@@ -612,12 +612,12 @@ public class ExecutionPlan implements IdentifiedDataSerializable {
 
         if (edge.isLocal() || nodeEngine.getThisAddress().equals(edge.getDistributedTo())) {
             // the edge is local-partitioned or it is distributed to one member and this member is the target
-            return ptionArrgmt.assignPartitionsToProcessors(downstreamParallelism, false);
+            return ptionArrangement.assignPartitionsToProcessors(downstreamParallelism, false);
         }
 
         if (edge.getDistributedTo().equals(DISTRIBUTE_TO_ALL)) {
             // the edge is distributed to all members, every member handles a subset of the partitions
-            return ptionArrgmt.assignPartitionsToProcessors(downstreamParallelism, true);
+            return ptionArrangement.assignPartitionsToProcessors(downstreamParallelism, true);
         }
 
         // the edge is distributed to a specific member and this member is NOT the target member,
@@ -639,7 +639,7 @@ public class ExecutionPlan implements IdentifiedDataSerializable {
                        Map<Address, ReceiverTasklet> addrToTasklet = new HashMap<>();
                        //create a receiver per address
                        int offset = 0;
-                       for (Address addr : ptionArrgmt.getRemotePartitionAssignment().keySet()) {
+                       for (Address addr : ptionArrangement.getRemotePartitionAssignment().keySet()) {
                            final OutboundCollector[] collectors = new OutboundCollector[ptionsPerProcessor.length];
                            // assign the queues starting from end
                            final int queueOffset = --offset;
